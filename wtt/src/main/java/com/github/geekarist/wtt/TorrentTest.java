@@ -25,6 +25,17 @@ public class TorrentTest {
 		assertThat(sha1(torrent)).isEqualTo("045E85F2EBC24A875A64FE2E9AC9B61F7AAD0499");
 	}
 
+	@Test
+	public void shouldFindOtherTorrent() throws IOException, NoSuchAlgorithmException {
+		// G
+		String query = "Casino Royale 2006";
+		// W
+		File torrent = Torrent.find(query);
+		// T
+		assertThat(torrent.getPath()).isEqualTo("B0A6FBFAE741DDE2842A9640B27395538F647E11.torrent");
+		assertThat(sha1(torrent)).isEqualTo("B0A6FBFAE741DDE2842A9640B27395538F647E11");
+	}
+
 	private String sha1(File torrent) throws IOException, NoSuchAlgorithmException {
 		MessageDigest sha1 = MessageDigest.getInstance("SHA-1");
 		InputStream input = null;
