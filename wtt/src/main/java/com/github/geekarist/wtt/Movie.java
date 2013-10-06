@@ -30,7 +30,7 @@ public class Movie {
         this.year = year;
     }
 
-    public static Movie get(String s) {
+    public static Movie fromUrl(String s) {
         try {
             Document document = Jsoup.connect(s).userAgent(USER_AGENT).referrer(REFERRER).timeout(TIMEOUT).get();
             String title = StringUtils.trim(document.select(TITLE_SELECTOR).get(0).text());
